@@ -3789,3 +3789,64 @@ Slides Index
 
 .text-slide-number {
   color: #abc; }
+
+  /* Agregador por Sergio */
+.arriba_izquierda {
+position: fixed;
+top:  200px;
+left: 100px;
+z-index: 100; 
+width: 300px; 
+-webkit-transform: rotate(-90deg);
+-moz-transform: rotate(-90deg); 
+transform: rotate(-90deg); 
+font-size:50px;
+background-color:black ;
+color: wcsshite;
+}
+.arriba_derecha {
+position: fixed;
+top:  200px;
+right: 100px;
+z-index: 100; 
+width: 300px; 
+-webkit-transform: rotate(90deg);
+-moz-transform: rotate(90deg); 
+transform: rotate(90deg); 
+font-size:50px;
+background-color:black ;
+color: white;
+}
+.abajo_izquierda {
+position: fixed;
+bottom:  200px;
+left: 80px;
+z-index: 100; 
+width: 300px; 
+-webkit-transform: rotate(-90deg);
+-moz-transform: rotate(-90deg); 
+transform: rotate(-90deg); 
+font-size:50px;
+background-color:black ;
+color: white;
+}
+
+.abajo_derecha {
+position: fixed;
+bottom:  200px;
+right: 100px;
+z-index: 100; 
+width: 300px; 
+-webkit-transform: rotate(90deg);
+-moz-transform: rotate(90deg); 
+transform: rotate(90deg); 
+font-size:50px;
+background-color:black ;
+color: white;
+}
+pre code {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
