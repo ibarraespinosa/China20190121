@@ -1516,7 +1516,7 @@ form[class*='bg-'] {
   [class*='content-'] + [class*='size-'] {
     clear: both;
     margin-top: 6.4rem; } }
-
+    
 /*=== 5.3 Slides - Background Images/Videos === */
 .background,
 [class*='background-'] {
@@ -1745,8 +1745,10 @@ footer .column h3 {
 
 .content-right .flexblock.features li,
 .content-left .flexblock.features li {
-  width: 46%; }
-
+  width: 30%; }
+  .content-mid .flexblock.features li {
+    width: 46%; }
+  
 /*====================================================================
 6.1 Features <ul class="flexblock features">
 ====================================================================== */
@@ -3850,3 +3852,4 @@ pre code {
   display: block;
   padding: 20px;
 }
+canvas { display:block; margin:1em auto; border:1px solid #ccc }
