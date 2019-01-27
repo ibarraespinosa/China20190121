@@ -3147,8 +3147,8 @@ function swing(p) {
 
 
 var canvas = document.getElementsByTagName('canvas')[0];
-canvas.width = 800;
-canvas.height = 400;
+canvas.width = 870;
+canvas.height = 410;
 
 var gkhead = new Image;
 

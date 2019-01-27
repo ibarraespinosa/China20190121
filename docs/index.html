@@ -100,8 +100,7 @@
         <section class="bg-apple">
           <!--.wrap = container (width: 90%) -->
           <div class="wrap size-50">
-            <h1>Emissions inventories of mobile sources using VEIN</h1>
-            <p class="text-intro">Vehicular emissions inventories with VEIN emissions model and some examples.</p>
+            <h1>Emissions inventories of mobile sources and inputs for air quality models using VEIN</h1>
             <p>Sergio Ibarra-Espinosa, Postdoc.</p>
             <p>Department of Atmospheric Sciences, Instituto de Astronomia, Geofísica e Ciências Atmosféricas, University of São Paulo, Brazil.</p>
             <p>Research Group of Regional Atmospheric Environment, Northeast Institute of Geography and Agroecology, Chinese Academy of Sciences, P. R. China</p>
@@ -327,6 +326,8 @@ Total Number of particles (N/km)
 “e_eth”, “e_hc3”, “e_hc5”, “e_hc8”, “e_ol2”, “e_olt”, “e_oli”, “e_iso”, “e_tol”, “e_xyl”, “e_c2h5oh”, “e_ald”, “e_hcho”, “e_ch3oh”, “e_ket”, “E_SO4i”, “E_SO4j”, “E_NO3i”, “E_NO3j”, “E_MP2.5i”, “E_MP2.5j”, “E_ORGi”, “E_ORGj”, “E_ECi”, “E_ECj”
 <h2>IVE model emission factors (base)</h2>
 “VOC_gkm”, “CO_gkm”, “NOx_gkm”, “PM_gkm”, “Pb_gkm”, “SO2_gkm”, “NH3_gkm”, “ONE_3_butadiene_gkm”, “formaldehyde_gkm”, “acetaldehyde_gkm”, “benzene_gkm”, “EVAP_gkm”, “CO2_gkm”, “N20_gkm”, “CH4_gkm”, “VOC_gstart”, “CO_gstart”, “NOx_gstart”, “PM_gstart”, “Pb_gstart”, “SO2_gstart”, “NH3_gstart”, “ONE_3butadiene_gstart”, “formaldehyde_gstart”,“acetaldehyde_gstart”, “benzene_gstart”, “EVAP_gstart”, “CO2_gstart”, “N20_gstart”, “CH4_gstart”
+<h2>Emissions</h2>
+Hot Exhaust, Cold Exhaust, Evaporative, Wear, resuspession, high emitters.
 
                       </div>
                       <!-- .end .wrap -->
@@ -387,8 +388,7 @@ Total Number of particles (N/km)
                   
           <section class="bg-apple">
           <div class="wrap">
-              <h3>Vehicular Composition</h3>
-              <h5>Before runnign VEIN, it is important to know the Vehicular Composition</h5>
+              <h4>Before running VEIN, it is important to know the <b>Vehicular Composition</b></h4>
               <style type="text/css">
                 .tg  {border-collapse:collapse;border-spacing:0;}
                 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
@@ -565,7 +565,7 @@ Total Number of particles (N/km)
                        spplot(as(dfspeednet, "Spatial"), c("S1", "S9"), col.regions = cptcity::cpt(), scales = list(Draw = T))<br>
                 </code>
                 <canvas>
-                <img src="../figuras/speeds.png" style="float: center; width: 60%; margin-right: 1%; margin-bottom: 0.5em;">
+                  <img src="../figuras/speeds.png" style="float: center; width: 60%; margin-right: 1%; margin-bottom: 0.5em;">
               </canvas>
 
               </div>
@@ -578,7 +578,7 @@ Total Number of particles (N/km)
                 <!--.wrap o <nav> = container 1200px -->
           <div class="wrap">
             <centered>
-                <h2>Emission factors. Speed functions</h2>
+                <h2>3. Emission factors. Speed functions</h2>
             </centered>
             <div class="content-left">
               <h4>
@@ -607,58 +607,98 @@ Total Number of particles (N/km)
         </section>
 
         <section class="bg-apple aligncenter">
-            <!--.wrap o <nav> = container 1200px -->
-      <div class="wrap">
-        <centered>
-            <h2>Emission factors. Scaled Speed functions</h2>
+          <!--.wrap o <nav> = container 1200px -->
+    <div class="wrap">
+      <centered>
         </centered>
-        <div class="content-left">
-            <h4>
-              <code align ="left">
-                        data(fe2015)<br>
-                        co1 <- fe2015[fe2015$Pollutant=="CO", ]<br>
-                        lef <- ef_ldv_scaled(dfcol = co1$PC_G,<br>
-                        v = "PC",<br>
-                        t = "4S",<br>
-                        cc = "<=1400",<br>
-                        f = "G",<br>
-                        eu = co1$Euro_LDV,<br>
-                        p = "CO")  <br>
-              </code>
-             </h4>
-            </div>
-            <div class="content-left">
-               <img src="../figuras/ef_scaled.png" style="float: center; width: 100%; margin-right: 1%; margin-bottom: 0.5em;">
-
-       </div>
- </div>
-      <!-- .end .wrap -->
-    </section>
+          <div class="content-left">
+            <h2>3. Emission factors. Constant by age of use</h2>
+            <img src="../figuras/cetesb.png" style="float: center; width: 90%; margin-right: 1%; margin-bottom: 0.5em;">  
+          </div>
+          <div class="content-left">
+            <h2>3. Emission factors. Scaled Speed functions</h2>
+            <img src="../figuras/ef_scaled.png" style="float: center; width: 100%; margin-right: 1%; margin-bottom: 0.5em;">
+ 
+      </div>
+  </div>
+    <!-- .end .wrap -->
+  </section>
 
 
-    <section class="bg-apple aligncenter">
-        <!--.wrap o <nav> = container 1200px -->
-  <div class="wrap">
-    <centered>
-        <h2>Emission factors. Constant by age of use</h2>
-      </centered>
-        <div class="content-left">
-          <h4>
-              <code align = "left">
-                  plot(ef_cetesb("CO", "PC_G"), <br>
-                  type = "b",<br>
-                  pch = 16,<br>
-                  col = "blue",<br>
-                  main = "CETESB EF PC CO by age of use [g/km]")
-              </code>
-          </h4>
 
-        </div>
-        <div class="content-left">
-            <img src="../figuras/cetesb.png" style="float: center; width: 100%; margin-right: 1%; margin-bottom: 0.5em;">
 
-    </div>
+<section class="bg-apple aligncenter">
+  <!--.wrap o <nav> = container 1200px -->
+<div class="wrap">
+<centered>
+  <h2>4. Emission estimation</h2>
+</centered>
+  <div class="content-left">
+    <h4>
+        <code align = "left">
+            euro <- c(rep("V", 5), rep("IV", 5), <br>
+            rep("III", 5), rep("II", 5),<br>
+            rep("I", 5), rep("PRE", 15))<br><br>
+            lef <- lapply(1:40, function(i) {<br>
+            ef_ldv_speed(v = "PC", t = "4S", <br>
+            cc = "<=1400", f = "G",<br>
+            eu = euro[i], p = "CO") })<br><br>
+            E_CO <- emis(veh = PC_E25_1400, 
+            lkm = net$lkm, ef = lef, 
+            speed = dfspeed,<br>
+            profile = pc_profile)<br><br>
+            plot(E_CO, xlab = "Hours", ylab = "[g/h]")
+        </code>
+    </h4>
+
+  </div>
+  <div class="content-left">
+      <img src="../figuras/E_CO.png" style="float: center; width: 100%; margin-right: 1%; margin-bottom: 0.5em;">
+<h5>
+  <code>
+    E_CO<br>
+    This EmissionsArray has<br>
+     1505 streets<br>
+     50 vehicle categories<br>
+     24 hours<br>
+     7 days<br>
+    [1] 0,986270352 0,341801941 0,050115563 0,132141033 0,005108484 0,567239797<br>
+    
+  </code>
+</h5>
 </div>
+</div>
+<!-- .end .wrap -->
+</section>
+
+<section class="bg-apple aligncenter">
+  <!--.wrap = container (width: 90%) -->
+  <div class="wrap">
+    <img src="../figuras/emishour.png" style="float: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;">
+    <img src="../figuras/emisage.png" style="float: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;">
+<!--               <h2 class="text-data">Air quality</h2> -->
+    <!-- <h3>Revenue in Q4 2024</h3> -->
+    <img src="../figuras/emis_gridh8.png" style="float: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;">
+    <img src="../figuras/emis_grid_edgar.png" style="float: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;">
+    <!-- Air quality -->
+
+    <div class="arriba_izquierda">
+      Hourly
+    </div> 
+
+    <div class="arriba_derecha">
+      By Age
+    </div> 
+
+    <div class="abajo_izquierda">
+      Street Gridded 
+    </div> 
+
+    <div class="abajo_derecha">
+      Edgar Transport
+    </div> 
+
+  </div>
   <!-- .end .wrap -->
 </section>
 
@@ -666,8 +706,8 @@ Total Number of particles (N/km)
 <section class="bg-apple aligncenter">
           <span class="background dark" style="background-image:url('figuras/china.jpg')"></span>
           <div class="wrap">
-            <h2 class="text-data">3,456,789</h2>
-            <h3>iPhone 7 in first 24 hours</h3>
+            <h2 class="text-data">WRF-Chem!</h2>
+            <h3>It create NetCDF files using <b>eixport</b> with ANY resolution</h3>
           </div>
           <!-- .end .wrap -->
         </section>
@@ -675,518 +715,88 @@ Total Number of particles (N/km)
         <section class="bg-apple aligncenter">
           <!--.wrap = container (width: 90%) -->
           <div class="wrap">
-            <h2 class="text-data">$48 Billion</h2>
-            <h3>Revenue in Q4 2024</h3>
+            <img src="../figuras/wrfchemi.png" style="float: center; width: 50%; margin-right: 1%; margin-bottom: 0.5em;">
           </div>
           <!-- .end .wrap -->
         </section>
-        <section class="bg-apple slide-bottom">
-          <!-- Overlay/Opacity: [class*="bg-"] > .background.dark or .light -->
-          <span class="background" style="background-image:url('https://source.unsplash.com/Y5Tjb62cxl8/')"></span>
-          <div class="wrap">
-            <div class="content-left">
-              <p>
-                <svg class="large fa-tree">
-                  <use xlink:href="#fa-tree"></use>
-                </svg>
-              </p>
-              <h2>1,000,000</h2>
-              <h3>We're working to protect up to a million acres of sustainable forest.</h3>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <div class="wrap">
-            <div class="card-50">
-              <figure><img class="aligncenter" src="../static/images/iphone.png" alt="iPhone"></figure>
-              <div class="flex-content">
-                <h2>
-                  <svg class="fa-apple">
-                    <use xlink:href="#fa-apple"></use>
-                  </svg>
-                  iPhone 7
-                </h2>
-                <p class="text-intro">3D Touch, 12MP photos, and 4K video.</p>
-                <p>Every iPhone they have made was built on the same belief. That a phone should be more than a collection of features. That, above all, a phone should be absolutely simple, beautiful, and magical to use.</p>
-              </div>
-              <!-- end .flex-content-->
-            </div>
-            <!-- end .card-50-->
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <div class="wrap">
-            <div class="grid vertical-align">
-              <div class="column">
-                <h2>
-                  <svg class="fa-apple">
-                    <use xlink:href="#fa-apple"></use>
-                  </svg>
-                  iPhone 7
-                </h2>
-                <p class="text-intro">We worked closely with the very talented people at Acme and created a new website. Content demo. </p>
-                <ul class="description">
-                  <li>
-                    <span class="text-label">
-                    Client:
-                    </span>
-                    Apple (2016)
-                  </li>
-                  <li>
-                    <span class="text-label">
-                    Services:
-                    </span>
-                    Web Design
-                  </li>
-                  <li>
-                    <span class="text-label">
-                    Website:
-                    </span>
-                    <a href="https://apple.com/iphone/">apple.com/iphone</a>
-                  </li>
-                </ul>
-              </div>
-              <!-- end .column-->
-              <div class="column">
-                <figure>
-                  <img src="../static/images/iphone.png" alt="iPhone">
-                </figure>
-              </div>
-              <!-- end figure-->
-            </div>
-            <!-- end .grid-->
-          </div>
-          <!-- end .wrap-->
-        </section>
-        <section class="bg-apple">
-          <div class="wrap">
-            <div class="card-50">
-              <div class="flex-content">
-                <ul class="flexblock specs">
-                  <li>
-                    <div>
-                      <svg class="fa-wifi">
-                        <use xlink:href="#fa-wifi"></use>
-                      </svg>
-                      <h2>Ultra-Fast WiFi</h2>
-                      Faster LTE with the best worldwide roaming.
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <svg class="fa-camera">
-                        <use xlink:href="#fa-camera"></use>
-                      </svg>
-                      <h2>Two cameras that shoot as one.</h2>
-                      12MP wide angle.
-                    </div>
-                  </li>
-                  <li>
-                    <div>
-                      <svg class="fa-life-ring">
-                        <use xlink:href="#fa-life-ring"></use>
-                      </svg>
-                      <h2>Lifetime Warranty </h2>
-                      We'll fix it or if we can't, we'll replace it.
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <!-- end .flex-content-->
-              <figure>
-                <img class="aligncenter" src="../static/images/iphone.png" alt="iPhone 6">
-              </figure>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
+
         <section class="bg-apple aligncenter">
-          <div class="wrap zoomIn">
-            <h1>
-              <svg class="fa-apple">
-                <use xlink:href="#fa-apple"></use>
-              </svg>
-              Pay
-            </h1>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <span class="background-left-bottom" style="background-image:url('../static/images/iphone-hand.png')"></span>
-          <div class="wrap">
-            <div class="content-right">
-              <h2>
-                Redesigning
-                <svg class="fa-apple">
-                  <use xlink:href="#fa-apple"></use>
-                </svg>
-                Pay
-              </h2>
-              <p>We've been working with the Acme team over the last three months to build a new app.</p>
-              <p>
-                <a href="#" class="button" title="Case study">Case study &rsaquo;</a>
-                <a href="https://www.apple.com/apple-pay/" class="button ghost" title="Apple Website">Open site &rsaquo;</a>
-              </p>
+            <!--.wrap = container (width: 90%) -->
+            <div class="wrap">
+              <img src="../figuras/o3map.png" style="float: center; width: 100%; margin-right: 1%; margin-bottom: 0.5em;">
             </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <span class="background-right-bottom" style="background-image:url('../static/images/iphone-hand.png')"></span>
+            <!-- .end .wrap -->
+          </section>
+
+        <section class="bg-apple aligncenter">
+            <!--.wrap = container (width: 90%) -->
+            <div class="wrap">
+              <img src="../figuras/O3_A1.png" style="float: center; width: 60%; margin-right: 1%; margin-bottom: 0.5em;">
+            </div>
+            <!-- .end .wrap -->
+          </section>
+
+
+        <section class="bg-apple aligncenter">
+            <!--.wrap = container (width: 90%) -->
+            <div class="wrap">
+              <img src="../figuras/NO_A1.png" style="float: center; width: 60%; margin-right: 1%; margin-bottom: 0.5em;">
+            </div>
+            <!-- .end .wrap -->
+          </section>
+
+          <section class="bg-apple aligncenter">
+              <!--.wrap = container (width: 90%) -->
+              <div class="wrap">
+                <img src="../figuras/NO2_A1.png" style="float: center; width: 60%; margin-right: 1%; margin-bottom: 0.5em;">
+              </div>
+              <!-- .end .wrap -->
+            </section>
+            
+        <section class="bg-apple aligncenter">
           <!--.wrap = container (width: 90%) -->
           <div class="wrap">
-            <div class="content-left">
-              <h2>Payments Made Simple</h2>
-              <p>Apple Pay is so easy. Pay with your debit cards and credit cards with just a touch.</p>
-              <div class="content-left">
-                <h3>Secure</h3>
-                <p>Your card is never stored. Apple Pay uses a device-specific number and unique transaction code.</p>
-              </div>
-              <!-- .end .content-left -->
-              <div class="content-left">
-                <h3>Universal</h3>
-                <p>Apple Pay works with most major credit and debit cards from nearly all banks.</p>
-              </div>
-              <!-- .end .content-left -->
-            </div>
-            <!-- .end .content-left -->
+            <h1>What else you can do?</h1>
+              <h3>Split street emissions to any length.</h3>
+              <h3>vein relies on sf, which is <b>super fast</b>.</h3>
+              <h3>Lots of possibilities.</h3>
+              <h3>It can be used to calculate road exposure.</h3>
+              <h2>BIG DATA.</h2>
           </div>
           <!-- .end .wrap -->
         </section>
-        <section class="bg-apple">
-          <span class="background-left-bottom" style="background-image:url('../static/images/iphone-hand.png')"></span>
-          <div class="wrap">
-            <div class="content-right">
-              <ul class="flexblock specs">
-                <li>
-                  <div>
-                    <svg class="fa-bolt">
-                      <use xlink:href="#fa-bolt"></use>
-                    </svg>
-                    <h2>Incredibly fast</h2>
-                    Just hold your iPhone near the reader.
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <svg class="fa-globe">
-                      <use xlink:href="#fa-globe"></use>
-                    </svg>
-                    <h2>Works with all major banks</h2>
-                    Apple Pay is accepted in restaurants, hotels...
-                  </div>
-                </li>
-                <li>
-                  <div>
-                    <svg class="fa-lock">
-                      <use xlink:href="#fa-lock"></use>
-                    </svg>
-                    <h2>The safer way to pay</h2>
-                    Your card number is never stored.
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <span class="background-right-bottom" style="background-image:url('../static/images/iphone-hand.png')"></span>
-          <div class="wrap">
-            <div class="content-left">
-              <h1>
-                <svg class="fa-apple">
-                  <use xlink:href="#fa-apple"></use>
-                </svg>
-                Pay
-              </h1>
-              <p>Use your iPhone to pay securely and easily at over a million store locations and within apps — with a single touch. See where you can use Apple Pay:
-              </p>
-              <form class="user" action="/" method="post">
-                <input type="text" name="location" placeholder="Stores in your city..." required>
-                <button type="submit" title="Search">Search &rsaquo;</button>
-              </form>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
+
+        <section class="bg-apple aligncenter">
           <!--.wrap = container (width: 90%) -->
           <div class="wrap">
-            <blockquote class="text-quote">
-              <p>I'm an optimist in the sense that I believe humans are noble and honorable, and some of them are really smart. I have a very optimistic view of individuals.</p>
-              <p>
-                <cite>
-                  <!-- <img class="avatar-56" src="../static/images/avatar.jpg" alt="Avatar"> --> Steve Jobs.
-                </cite>
-              </p>
-            </blockquote>
+            <h2>Some  References</h2>
+            <h4>
+            Ibarra-Espinosa, S., Ynoue, R., O'Sullivan, S., Pebesma, E., Andrade, M. D. F., and Osses,
+  M.: VEIN v0.2.2: an R package for bottom-up vehicular emissions inventories, Geosci. Model
+  Dev., 11, 2209-2229, https://doi.org/10.5194/gmd-11-2209-2018, 2018. <br>
+
+Grell, G. A., Peckham, S. E., Schmitz, R., McKeen, S. A., Frost, G., Skamarock, W. C., & Eder, B. (2005). Fully coupled “online” chemistry within the WRF model. Atmospheric Environment, 39(37), 6957-6975. <br>
+Ibarra-Espinosa S., Schuch D., Freitas E., (2018). eixport: An R package to export emissions to atmospheric models. Journal of Open Source Software, 3(24), 607, https://doi.org/10.21105/joss.00607<br>
+Landrigan, P. J., Fuller, R., Acosta, N. J., Adeyi, O., Arnold, R., Baldé, A. B., ... & Chiles, T. (2017). The Lancet Commission on pollution and health. The Lancet.<br>
+Cook, J., Oreskes, N., Doran, P. T., Anderegg, W. R., Verheggen, B., Maibach, E. W., ... & Nuccitelli, D. (2016). Consensus on consensus: a synthesis of consensus estimates on human-caused global warming. Environmental Research Letters, 11(4), 048002.<br>
+Molina, L. T., Molina, M. J., Slott, R. S., Kolb, C. E., Gbor, P. K., Meng, F., ... & Tang, X. (2004). Air quality in selected megacities. Journal of the Air & Waste Management Association, 54(12), 1-73.<br>
+Ibarra-Espinosa, Sergio. 2018. “VEINBOOK: Estimating vehicular emissions with the R package VEIN”. Self-
+published
+book
+on
+AMAZON:,
+https://www.amazon.com/dp/B07L7XRFKC, ISBN-13: 978-1791571153, ISBN-10: 1791571158.
+</h4>
+
           </div>
           <!-- .end .wrap -->
         </section>
-        <section class="bg-apple">
-          <span class="background-right-bottom" style="background-image:url('https://webslides.tv/static/images/tim-cook.png')"></span>
-          <div class="wrap">
-            <div class="content-left">
-              <blockquote>
-                <p>&ldquo;We see that privacy is a fundamental human right that people have. We are going to do everything that we can to help maintain that trust.&rdquo;</p>
-                <p><cite>Tim Cook, CEO of Apple.</cite></p>
-              </blockquote>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <header>
-            <!--.wrap o <nav> = container 1200px -->
-            <div class="wrap">
-              <p>Header <span class="alignright">.alignright</span></p>
-            </div>
-          </header>
-          <div class="aligncenter fadeInUp">
-            <h2>Simple CSS Alignments</h2>
-            <p>Put content wherever you want.</p>
-          </div>
-          <footer class="bg-trans-dark">
-            <div class="wrap">
-              <p>
-                <span class="alignleft">
-                Footer
-                </span>
-                <span class="alignright">
-                  <a href="#" title="Twitter">
-                    <svg class="fa-twitter">
-                      <use xlink:href="#fa-twitter"></use>
-                    </svg>
-                    @username
-                  </a>
-                </span>
-              </p>
-            </div>
-          </footer>
-        </section>
-        <section class="bg-apple slide-top">
-          <div class="wrap">
-            <div class="content-left">
-              <h3>1/9 left top</h3>
-              <p>Put content wherever you want. Have less. Do more. Create beautiful solutions.</p>
-              <p><code>.slide-top and .content-left</code></p>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple slide-top">
-          <div class="wrap">
-            <div class="content-center">
-              <h3>2/9 center top</h3>
-              <p>Apple I was designed and hand-built by Steve Wozniak. Steve Jobs had the idea of selling the computer.</p>
-              <p><code>.slide-top and .content-center</code></p>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple slide-top">
-          <div class="wrap">
-            <div class="content-right">
-              <h3>3/9 right top</h3>
-              <p>The Apple II is one of the first highly successful computers.</p>
-              <p><code>.slide-top and .content-right</code></p>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <div class="wrap">
-            <div class="content-left">
-              <h3>4/9 left center</h3>
-              <p>The Apple III is a business-oriented personal computer that was intended as the successor to the Apple II series.</p>
-              <p><code>.content-left</code></p>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <div class="wrap">
-            <div class="content-center">
-              <h3>5/9 center</h3>
-              <p>Apple Lisa was one of the first personal computers to offer a graphical user interface.</p>
-              <p><code>.content-center</code></p>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <div class="wrap">
-            <div class="content-right">
-              <h3>6/9 right center</h3>
-              <p>The Macintosh was the company's first mass-market personal computer featuring a GUI and mouse.</p>
-              <p><code>.content-right</code></p>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple slide-bottom">
-          <div class="wrap">
-            <div class="content-left">
-              <h3>7/9 left bottom</h3>
-              <p>The iBook was a line of laptop computers designed and marketed by Apple Inc. from 1999 to 2006.</p>
-              <p><code>.slide-bottom</code> and <code>.content-left</code></p>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple slide-bottom">
-          <div class="wrap">
-            <div class="content-center">
-              <h3>8/9 center bottom</h3>
-              <p>Apple introduced the first generation iPod on October 23, 2001, with the slogan "1,000 songs in your pocket".</p>
-              <p><code>.slide-bottom</code> and <code>.content-center</code></p>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple slide-bottom">
-          <div class="wrap">
-            <div class="content-right">
-              <h3>9/9 right bottom</h3>
-              <p>The original iPhone was introduced by Steve Jobs on January 9, 2007. Jobs introduced the iPhone as a combination of three devices.</p>
-              <p><code>.slide-bottom</code> and <code>.content-right</code></p>
-            </div>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <div class="wrap size-50">
-            <h2>CSS Animations</h2>
-            <p>Fadein transition to all slides.</p>
-            <pre>&lt;article id="webslides"&gt;
-  &lt;section&gt;
-    &lt;div class="wrap fadeInUp"&gt;
-      &lt;h1&gt;Slide&lt;/h1&gt;
-    &lt;/div&gt;
-  &lt;/section&gt;
-&lt;/article&gt;</pre>
-            <p>Just 5 basic animations: .fadeIn, .fadeInUp, .zoomIn, .slideInLeft, and .slideInRight.</p>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-black aligncenter">
-          <span class="background light" style="background-image:url('https://source.unsplash.com/UxtIESWxLh8/')"></span>
-          <div class="wrap">
-            <h2>Embedding Media</h2>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple">
-          <div class="wrap">
-            <div class="content-left">
-              <h3><a href="https://webslides.tv/demos/media#slide=2">YouTube API</a></h3>
-              <p>Embed videos with loop, autoplay, and muted attributes. The video will automatically play when the slide is loaded.</p>
-              <pre>&lt;div class="embed"&gt;
- &lt;div data-youtube data-youtube-id=&quot;CQY3KUR3VzM&quot; data-autoplay &gt;&lt;/div&gt;
-&lt;/div&gt;</pre>
-              <p><code>.embed</code> (responsive)</p>
-            </div>
-            <!-- end .content-left -->
-            <div class="content-left">
-              <!-- <div class="embed"> = Responsive -->
-              <div class="embed">
-                <!-- <div data-youtube data-youtube-id="CQY3KUR3VzM" data-autoplay data-no-controls></div> -->
-              </div>
-              <!-- end .embed -->
-            </div>
-            <!-- end .content-left -->
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple fullscreen">
-          <!-- Fullscreen Video -->
-          <div class="embed">
-            <div data-youtube data-youtube-id="lvOKBQvbLhg" data-autoplay></div>
-          </div>
-          <!-- .end .embed -->
-        </section>
-        <section class="fullscreen bg-apple aligncenter">
-         <div class="embed">
-           <video autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
-            <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
-           </video>
-          </div><!-- .embed -->
-          <!-- .wrap = container (width: 90%) -->
-          <div class="wrap size-50">
-            <h2><strong>Be Awesome</strong></h2>
-          </div>
-        </section>
-        <section class="fullscreen bg-black aligncenter">
-          <div class="embed dark">
-             <video autoplay loop muted poster="https://webslides.tv/static/images/peggy.jpg">
-             <source src="https://webslides.tv/static/videos/peggy.mp4" type="video/mp4">
-            </video>
-          </div><!-- .embed -->
-          <!-- .wrap = container (width: 90%) -->
-          <div class="wrap size-50">
-            <h2><strong>Think Different</strong></h2>
-            <p>Overlay: <code>fullscreen.bg-black > .embed.dark</code> or .light</p>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple aligncenter">
-          <span class="background-right-bottom" style="background-image:url('https://webslides.tv/static/images/tim-cook.png')"></span>
-          <div class="wrap">
-            <h1>One more thing...</h1>
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple aligncenter">
-          <div class="wrap">
-            <div class="cta">
-              <div class="number">
-                <p><span>Ag</span></p>
-              </div>
-              <!--end .number -->
-              <div class="benefit">
-                <p class="text-subtitle">San Francisco</p>
-                <h3><strong>The quick brown fox jumps over the lazy dog</strong>.</h3>
-                <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-                <p>abcdefghijklmnopqrstuvwxyz</p>
-                <p>1234567890(,.;:?!$&*)</p>
-              </div>
-              <!--end .benefit -->
-            </div>
-            <!--end .cta -->
-          </div>
-          <!-- .end .wrap -->
-        </section>
-        <section class="bg-apple aligncenter">
-          <!-- .wrap = container (width: 90%) -->
-          <div class="wrap">
-            <h2><strong>Start in seconds</strong></h2>
-            <p class="text-intro">120+ prebuilt slides ready to use.</p>
-            <p>
-              <a href="https://webslides.tv/webslides-latest.zip" class="button" title="Download WebSlides">
-                <svg class="fa-cloud-download">
-                  <use xlink:href="#fa-cloud-download"></use>
-                </svg>
-                Free Download
-              </a>
-              <span class="try">
-                <a href="https://www.paypal.me/jlantunez/8" title="Good karma :)">
-                  <svg class="fa-paypal">
-                    <use xlink:href="#fa-paypal"></use>
-                  </svg>
-                  Pay what you want.
-                </a>
-              </span>
-            </p>
-          </div>
-          <!-- .end .wrap -->
-        </section>
+
+
         <section class="bg-apple aligncenter">
           <h2 class="text-emoji zoomIn">😎</h2>
           <h3><strong>Thank you!</strong></h2>
-          <p><a href="https://twitter.com/webslides" title="@WebSlides on Twitter">@WebSlides</a></p>
+          <p><a href="https://twitter.com/SergioIbarraEs1" title="Twitter">@SergioIbarraEs1</a></p>
         </section>
 
       </article>
